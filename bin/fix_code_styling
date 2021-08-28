@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+FileUtils.chdir APP_ROOT do
+  puts "\n== Finding missing translations =="
+  system 'i18n-tasks missing'
+
+  puts "\n== Normalising translations =="
+  system 'i18n-tasks normalize'
+
+  puts '== Fixing Ruby =='
+  system! 'standardrb --fix'
+
+  puts '== Fixing JS =='
+  system! 'npx standard --fix'
+end
