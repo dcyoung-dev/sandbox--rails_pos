@@ -8,6 +8,6 @@
   </ul>
 
   <ul>
-    <%= render @category.menu_items, basket: @basket %>
+    <%= render @category.menu_items.ordered, basket: @basket %>
   </ul>
 <% end %>

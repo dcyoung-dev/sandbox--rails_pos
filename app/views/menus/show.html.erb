@@ -1,19 +1,7 @@
 <%= turbo_frame_tag(:menu, style: "display: grid; grid-template-columns: 1fr 2fr") do %>
   <%= render @basket %>
 
-
-  <%= turbo_frame_tag(:categories) do %>
-
-    <ul class="nav nav-tabs">
-      <% @categories.each do |category| %>
-        <li class="nav-item">
-          <%= link_to category.name, basket_category_path(@basket, category), class: ["nav-link", category == @categories.first ? "active" : nil] %>
-        </li>
-      <% end %>
-    </ul>
-
-    <ul>
-      <%= render @categories.first.menu_items, basket: @basket %>
-    </ul>
+  <%= turbo_frame_tag(:categories, src: basket_category_path(@basket, @default_category)) do %>
+    loading...
   <% end %>
 <% end %>

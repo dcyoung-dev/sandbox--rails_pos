@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class MenuItem < ApplicationRecord
   belongs_to :product
   belongs_to :category
 
-  scope :ordered, -> {order(position: :asc)}
+  scope :ordered, -> { order(position: :asc) }
 
   delegate :name, :price, :price_pence, to: :product
 end
