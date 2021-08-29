@@ -1,7 +1,31 @@
 <li>
-  <%= basket_item.name %>: <%= humanized_money_with_symbol basket_item.price %>
+  <span class="item-quantity">
+    <%= basket_item.quantity %> x
+  </span>
 
-  <%= form_with(model: basket_item, method: :delete) do |form| %>
-    <%= form.submit "Remove" %>
-  <% end %>
+  <span class="item-name">
+    <%= basket_item.name %>
+  </span>
+
+  <span class="item-price small text-muted">
+    @ <%= humanized_money_with_symbol basket_item.price %> each:
+  </span>
+
+  <span class="item-total">
+    <%= humanized_money_with_symbol basket_item.total %>
+  </span>
+
+  <div class="actions d-flex">
+    <%= form_with(model: basket_item, url: increment_basket_item_path(basket_item)) do |form| %>
+      <%= form.submit "+1" %>
+    <% end %>
+
+    <%= form_with(model: basket_item, url: decrement_basket_item_path(basket_item)) do |form| %>
+      <%= form.submit "-1" %>
+    <% end %>
+
+    <%= form_with(model: basket_item, method: :delete, class: "float-end ") do |form| %>
+      <%= form.submit "Remove" %>
+    <% end %>
+  </div>
 </li>

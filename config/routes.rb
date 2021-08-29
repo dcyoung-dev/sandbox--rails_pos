@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     resources :categories, only: :show
   end
 
-  resources :basket_items, only: :destroy
+  resources :basket_items, only: :destroy do
+    member do
+      patch :increment
+      patch :decrement
+    end
+  end
 
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
