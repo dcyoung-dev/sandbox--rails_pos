@@ -1,0 +1,10 @@
+<%= content_tag(:li, id: dom_id(menu_item)) do %>
+  <h2><%= menu_item.name %></h2>
+  <h3><%= menu_item.price %></h3>
+
+
+  <%= form_with(model: [basket, BasketItem.new(product: menu_item.product)], data: {turbo_frame: dom_id(basket)}) do |form| %>
+    <%= form.hidden_field(:product_id) %>
+    <%= form.submit "Add to Basket" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,9 @@
+<%= turbo_frame_tag(basket) do %>
+  <h2>Basket</h2>
+  <ul>
+    <%= render basket.basket_items %>
+  </ul>
+  <div class="totals">
+    <h3><%= basket.total %></h3>
+  </div>
+<% end %>

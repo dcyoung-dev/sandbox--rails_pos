@@ -1,0 +1,44 @@
+<%= form_with(model: menu_item, local: true) do |form| %>
+  <% if menu_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
+
+      <ul>
+      <% menu_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :product_id, class: 'form-label' %>
+      <%= form.select :product_id, Product.all.pluck(:name, :id), class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :category_id, class: 'form-label' %>
+      <%= form.select :category_id, Category.all.pluck(:name, :id), class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :position, class: 'form-label' %>
+      <%= form.number_field :position, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <% if menu_item.persisted? %>
+      <div class="float-end">
+        <%= link_to 'Destroy', menu_item, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if menu_item.persisted? %>
+      <%= link_to "Cancel", menu_item, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", menu_items_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

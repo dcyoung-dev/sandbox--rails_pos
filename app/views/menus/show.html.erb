@@ -1,0 +1,10 @@
+<%= turbo_frame_tag(:menu, style: "display: grid; grid-template-columns: 1fr 2fr") do %>
+  <%= render @basket %>
+
+  <div id="menu_items">
+    <h2>Menu</h2>
+    <ul>
+      <%= render @menu_items, basket: @basket %>
+    </ul>
+  </div>
+<% end %>

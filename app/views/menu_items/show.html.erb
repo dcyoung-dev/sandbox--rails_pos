@@ -1,0 +1,18 @@
+<div class="page-header">
+  <%= link_to menu_items_path, class: 'btn btn-default' do %>
+    All Menu_items
+  <% end %>
+  <%= link_to edit_menu_item_path(@menu_item), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show menu_item</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Product:</dt>
+  <dd><%= @menu_item.product %></dd>
+  <dt>Category:</dt>
+  <dd><%= @menu_item.category %></dd>
+  <dt>Position:</dt>
+  <dd><%= @menu_item.position %></dd>
+</dl>

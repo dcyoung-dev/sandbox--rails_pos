@@ -1,0 +1,7 @@
+<li>
+  <%= basket_item.name %>: <%= basket_item.price %>
+
+  <%= form_with(model: basket_item, method: :delete) do |form| %>
+    <%= form.submit "Remove" %>
+  <% end %>
+</li>
