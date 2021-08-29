@@ -4,6 +4,6 @@
     <%= render basket.basket_items %>
   </ul>
   <div class="totals">
-    <h3><%= basket.total %></h3>
+    <h3><%= humanized_money_with_symbol basket.total %></h3>
   </div>
 <% end %>

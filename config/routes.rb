@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :baskets, only: [:show] do
     resources :basket_items, only: :create
+    resources :categories, only: :show
   end
 
   resources :basket_items, only: :destroy

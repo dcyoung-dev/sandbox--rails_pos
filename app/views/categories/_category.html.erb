@@ -1,0 +1,13 @@
+<div id="menu_items">
+  <h2>Menu</h2>
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+        <%= link_to %>
+      </li>
+    <% end %>
+  </ul>
+  <ul>
+    <%= render @menu_items, basket: @basket %>
+  </ul>
+</div>

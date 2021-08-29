@@ -1,7 +1,7 @@
 class Basket < ApplicationRecord
   has_many :basket_items
-
-  def total
-    basket_items.sum(&:price)
+  monetize :total_pence
+  def total_pence
+    basket_items.sum(&:price_pence)
   end
 end

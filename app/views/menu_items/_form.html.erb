@@ -4,27 +4,27 @@
       <h2><%= pluralize(menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
 
       <ul>
-      <% menu_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% menu_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="mb-3">
     <%= form.label :product_id, class: 'form-label' %>
-      <%= form.select :product_id, Product.all.pluck(:name, :id), class: 'form-control' %>
-    </div>
+    <%= form.select :product_id, Product.all.pluck(:name, :id), class: 'form-control' %>
+  </div>
 
   <div class="mb-3">
     <%= form.label :category_id, class: 'form-label' %>
-      <%= form.select :category_id, Category.all.pluck(:name, :id), class: 'form-control' %>
-    </div>
+    <%= form.select :category_id, Category.all.pluck(:name, :id), class: 'form-control' %>
+  </div>
 
   <div class="mb-3">
     <%= form.label :position, class: 'form-label' %>
-      <%= form.number_field :position, class: 'form-control' %>
-    </div>
+    <%= form.number_field :position, class: 'form-control' %>
+  </div>
 
   <div class="mb-3">
     <% if menu_item.persisted? %>

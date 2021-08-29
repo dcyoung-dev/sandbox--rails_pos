@@ -1,5 +1,5 @@
 <li>
-  <%= basket_item.name %>: <%= basket_item.price %>
+  <%= basket_item.name %>: <%= humanized_money_with_symbol basket_item.price %>
 
   <%= form_with(model: basket_item, method: :delete) do |form| %>
     <%= form.submit "Remove" %>
