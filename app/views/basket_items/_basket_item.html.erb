@@ -7,9 +7,11 @@
     <%= basket_item.name %>
   </span>
 
-  <span class="item-price small text-muted">
-    @ <%= humanized_money_with_symbol basket_item.price %> each:
-  </span>
+  <% if basket_item.quantity > 1 %>
+    <span class="item-price small text-muted">
+      @ <%= humanized_money_with_symbol basket_item.price %> each:
+    </span>
+  <% end %>
 
   <span class="item-total">
     <%= humanized_money_with_symbol basket_item.total %>

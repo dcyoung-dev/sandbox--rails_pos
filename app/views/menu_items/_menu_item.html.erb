@@ -1,4 +1,4 @@
-<%= content_tag(:li, id: dom_id(menu_item)) do %>
+<%= content_tag(:li, id: dom_id(menu_item), class: "p-3") do %>
   <h2><%= menu_item.name %></h2>
   <h3><%= humanized_money_with_symbol menu_item.price %></h3>
 
