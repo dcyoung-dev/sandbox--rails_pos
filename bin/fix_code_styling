@@ -19,5 +19,5 @@ FileUtils.chdir APP_ROOT do
   system! 'standardrb --fix'
 
   puts '== Fixing JS =='
-  system! 'npx standard --fix'
+  system! 'yarn standard --fix'
 end

@@ -1,5 +1,5 @@
 class MenuItemsController < ApplicationController
-  before_action :set_menu_item, only: %i[ show edit update destroy ]
+  before_action :set_menu_item, only: %i[show edit update destroy]
 
   # GET /menu_items or /menu_items.json
   def index
@@ -57,13 +57,14 @@ class MenuItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_menu_item
-      @menu_item = MenuItem.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def menu_item_params
-      params.require(:menu_item).permit(:product_id, :category_id, :position)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_menu_item
+    @menu_item = MenuItem.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def menu_item_params
+    params.require(:menu_item).permit(:product_id, :category_id, :position)
+  end
 end

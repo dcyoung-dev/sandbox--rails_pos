@@ -9,12 +9,11 @@ class BasketItemsController < ApplicationController
 
     respond_to do |format|
       if @basket_item.save
-        format.turbo_stream
         format.html { redirect_to basket, notice: "Basket Item was successfully created." }
       else
-        format.turbo_stream
         format.html { redirect_to product(@basket_item.product), status: :unprocessable_entity }
       end
+      format.turbo_stream
     end
   end
 
@@ -24,12 +23,12 @@ class BasketItemsController < ApplicationController
 
     respond_to do |format|
       if @basket_item.increase_quantity
-        format.turbo_stream { render :create }
         format.html { redirect_to basket }
       else
-        format.turbo_stream { render :create }
         format.html { render :new, status: :unprocessable_entity }
       end
+
+      format.turbo_stream { render :create }
     end
   end
 
@@ -39,12 +38,11 @@ class BasketItemsController < ApplicationController
 
     respond_to do |format|
       if @basket_item.decrease_quantity
-        format.turbo_stream { render :create }
         format.html { redirect_to basket }
       else
-        format.turbo_stream { render :create }
         format.html { render :new, status: :unprocessable_entity }
       end
+      format.turbo_stream { render :create }
     end
   end
 
