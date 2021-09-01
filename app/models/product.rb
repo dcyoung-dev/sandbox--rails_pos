@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   end
 
   def quantity_in_stock
-    10
+    stock_count
   end
 
   def quantity_in_baskets
