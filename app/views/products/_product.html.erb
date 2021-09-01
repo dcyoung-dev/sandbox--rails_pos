@@ -1,10 +1,14 @@
-<%= content_tag(:li, id: dom_id(product)) do %>
+<%= turbo_frame_tag(product, data: { product_id: product.id }) do %>
   <h2><%= product.name %></h2>
-  <h3><%= product.price %></h3>
+  <h3><%= humanized_money_with_symbol product.price %></h3>
+  <h4><%= product.quantity_available %></h4>
 
-
-  <%= form_with(model: [basket, BasketItem.new(product: product)], data: {turbo_frame: dom_id(basket)}) do |form| %>
-    <%= form.hidden_field(:product_id) %>
-    <%= form.submit "Add to Basket" %>
+  <% if product.stock_available? %>
+    <%= form_with(model: [basket, BasketItem.new(product: product)],
+                  data: { turbo_frame: "_top" }
+        ) do |form| %>
+      <%= form.hidden_field(:product_id) %>
+      <%= form.submit "Add to Basket", data: { disable_with: false } %>
+    <% end %>
   <% end %>
 <% end %>

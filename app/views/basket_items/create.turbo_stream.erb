@@ -1,0 +1,7 @@
+<%= turbo_stream.update dom_id(@basket_item.basket) do %>
+  <%= render @basket_item.basket %>
+<% end %>
+
+<%= turbo_stream.replace_all "[data-product-id='#{@basket_item.product_id}']" do %>
+  <%= render @basket_item.product, basket: @basket_item.basket %>
+<% end %>

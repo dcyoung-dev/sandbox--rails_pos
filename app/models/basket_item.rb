@@ -4,7 +4,9 @@ class BasketItem < ApplicationRecord
 
   monetize :total_pence
 
-  delegate :price, :price_pence, :name, to: :product
+  delegate :price, :price_pence, :name, :stock_available?, to: :product
+
+  validate :stock_availability
 
   def increase_quantity
     self.quantity += 1
@@ -14,7 +16,8 @@ class BasketItem < ApplicationRecord
   def decrease_quantity
     self.quantity -= 1
     if quantity.positive?
-      save
+      # TODO: This feels wrong
+      save(validate: false)
     else
       destroy
     end
@@ -22,5 +25,11 @@ class BasketItem < ApplicationRecord
 
   def total_pence
     price_pence * quantity
+  end
+
+  private
+
+  def stock_availability
+    errors.add(:product, :unavailable) unless stock_available?
   end
 end

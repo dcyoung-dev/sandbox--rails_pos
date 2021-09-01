@@ -6,5 +6,5 @@ class MenuItem < ApplicationRecord
 
   scope :ordered, -> { order(position: :asc) }
 
-  delegate :name, :price, :price_pence, to: :product
+  delegate :name, :price, :price_pence, :quantity_available, to: :product
 end
