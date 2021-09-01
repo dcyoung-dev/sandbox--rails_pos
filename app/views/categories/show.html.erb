@@ -7,7 +7,7 @@
     <% end %>
   </ul>
 
-  <ul class="list-inline d-grid" style="grid-template-columns: repeat(4, max-content); grid-gap: 2rem">
+  <ul class="list-inline d-grid" style="grid-template-columns: repeat(auto-fit, minmax(10rem, max-content)); grid-gap: 2rem">
     <%= render @category.menu_items.ordered, basket: @basket %>
   </ul>
 <% end %>
