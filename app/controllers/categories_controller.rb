@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1 or /categories/1.json
   def show
     @basket = Basket.find(params.fetch(:basket_id))
-    @categories = Category.all
+    @categories = Category.order(:id).all
   end
 
   # GET /categories/new
