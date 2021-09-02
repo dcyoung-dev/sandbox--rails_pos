@@ -1,10 +1,10 @@
-<%= turbo_frame_tag(product, data: { product_id: product.id }) do %>
+<%= turbo_frame_tag(nil, data: { product_id: product.id }) do %>
   <h2><%= product.name %></h2>
   <h3><%= humanized_money_with_symbol product.price %></h3>
 
   <% if product.stock_available? %>
     <span class="small text-muted"><%= product.quantity_available %> remaining</span>
-    <%= form_with(model: [basket, BasketItem.new(product: product)],
+    <%= form_with(model: BasketItem.new(product: product),
                   data: { turbo_frame: "_top" }
         ) do |form| %>
       <%= form.hidden_field(:product_id) %>

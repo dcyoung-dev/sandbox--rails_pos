@@ -2,12 +2,12 @@
   <ul class="nav nav-tabs">
     <% @categories.each do |category| %>
       <li class="nav-item">
-        <%= link_to category.name, basket_category_path(@basket, category), class: ["nav-link", category == @category ? "active" : nil] %>
+        <%= link_to category.name, category_path(category), class: ["nav-link", category == @category ? "active" : nil] %>
       </li>
     <% end %>
   </ul>
 
   <ul class="list-inline d-grid" style="grid-template-columns: repeat(auto-fit, minmax(10rem, max-content)); grid-gap: 2rem">
-    <%= render @category.menu_items.ordered, basket: @basket %>
+    <%= render @category.menu_items.ordered %>
   </ul>
 <% end %>

@@ -1,3 +1,4 @@
 <%= content_tag(:li, id: dom_id(menu_item), class: "p-3") do %>
-  <%= render menu_item.product, basket: basket %>
+  <%= turbo_stream_from menu_item.product %>
+  <%= render menu_item.product %>
 <% end %>
