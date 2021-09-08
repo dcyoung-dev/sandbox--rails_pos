@@ -18,16 +18,22 @@
   </span>
 
   <div class="actions d-flex">
-    <%= form_with(model: basket_item, url: increment_basket_item_path(basket_item)) do |form| %>
-      <%= form.submit "+1" %>
-    <% end %>
 
-    <%= form_with(model: basket_item, url: decrement_basket_item_path(basket_item)) do |form| %>
-      <%= form.submit "-1" %>
-    <% end %>
+    <div class="btn-toolbar" role="toolbar" aria-label="Quantity modifiers">
+      <div class="btn-group me-2" role="group" aria-label="Edit by 1">
+        <%= link_to(increment_basket_item_path(basket_item), method: :patch, class: [:btn, "btn-outline-secondary"]) do %>
+          +1
+        <% end %>
+        <%= link_to(decrement_basket_item_path(basket_item), method: :patch, class: [:btn, "btn-outline-secondary"]) do %>
+          -1
+        <% end %>
+      </div>
 
-    <%= form_with(model: basket_item, method: :delete, class: "float-end ") do |form| %>
-      <%= form.submit "Remove" %>
-    <% end %>
+      <div class="btn-group me-2" role="group" aria-label="Second group">
+        <%= link_to(basket_item_path(basket_item), method: :delete, class: [:btn, "btn-outline-danger"]) do %>
+          Remove
+        <% end %>
+      </div>
+    </div>
   </div>
 </li>
