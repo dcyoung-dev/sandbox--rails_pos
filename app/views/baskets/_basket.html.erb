@@ -1,9 +1,13 @@
 <%= turbo_frame_tag(basket) do %>
   <h2>Basket</h2>
-  <ul>
-    <%= render basket.basket_items.order(created_at: :asc) %>
-  </ul>
-  <div class="totals">
-    <h3><%= humanized_money_with_symbol basket.total %></h3>
-  </div>
+  <%= form_with(url: basket_order_path(basket)) do |form| %>
+    <ul>
+      <%= render basket.basket_items.order(created_at: :asc) %>
+    </ul>
+    <div class="totals">
+      <h3><%= humanized_money_with_symbol basket.total %></h3>
+    </div>
+    
+    <%= form.submit "Place Order" %>
+  <% end %>
 <% end %>

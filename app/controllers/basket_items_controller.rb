@@ -1,6 +1,6 @@
 class BasketItemsController < ApplicationController
   def create
-    basket = Basket.first
+    basket = Basket.incomplete.first
     @basket_item = basket.basket_items.find_or_initialize_by(basket_item_params)
 
     if @basket_item.persisted?

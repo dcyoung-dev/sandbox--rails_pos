@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
   resource :menu
-
+  resources :baskets do
+    resource :order
+  end
   resources :basket_items, only: [:create, :destroy] do
     member do
       patch :increment
