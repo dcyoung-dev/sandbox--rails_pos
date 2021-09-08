@@ -4,14 +4,15 @@ class OrdersController < ApplicationController
     order = basket.build_order
 
     respond_to do |format|
-      if order.save
+      @completed_basket = basket
+      if basket.basket_items.any? && order.save
+        @basket = Basket.create
         format.html { redirect_to menu_path, notice: "Order was successfully created." }
       else
+        @basket = basket
         format.html { redirect_to basket, status: :unprocessable_entity }
       end
 
-      @completed_basket = basket
-      @basket = Basket.create
       format.turbo_stream
     end
   end
