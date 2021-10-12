@@ -1,7 +1,7 @@
-<%= turbo_frame_tag(:menu, style: "display: grid; grid-template-columns: 1fr 2fr") do %>
+<div style="display: grid; grid-template-columns: 1fr 2fr">
   <%= render @basket %>
 
   <%= turbo_frame_tag(:categories, src: category_path(@default_category)) do %>
     loading...
   <% end %>
-<% end %>
+</div>

@@ -4,9 +4,7 @@
 
   <% if product.stock_available? %>
     <span class="small text-muted"><%= product.quantity_available %> remaining</span>
-    <%= form_with(model: BasketItem.new(product: product),
-                  data: { turbo_frame: "_top" }
-        ) do |form| %>
+    <%= form_with(model: BasketItem.new(product: product)) do |form| %>
       <%= form.hidden_field(:product_id) %>
       <%= form.submit "Add to Basket", data: { disable_with: false } %>
     <% end %>
