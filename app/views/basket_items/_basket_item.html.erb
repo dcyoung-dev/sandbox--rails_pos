@@ -21,8 +21,14 @@
 
     <div class="btn-toolbar" role="toolbar" aria-label="Quantity modifiers">
       <div class="btn-group me-2" role="group" aria-label="Edit by 1">
-        <%= link_to(increment_basket_item_path(basket_item), method: :patch, class: [:btn, "btn-sm", "btn-outline-secondary"]) do %>
-          +1
+        <% if basket_item.product.stock_available? %>
+          <%= link_to(increment_basket_item_path(basket_item), method: :patch, class: [:btn, "btn-sm", "btn-outline-secondary"]) do %>
+            +1
+          <% end %>
+        <% else %>
+          <%= content_tag(:span, class: [:btn, "btn-sm", "btn-outline-secondary disabled"]) do %>
+            +1
+          <% end %>
         <% end %>
         <%= link_to(decrement_basket_item_path(basket_item), method: :patch, class: [:btn, "btn-sm", "btn-outline-secondary"]) do %>
           -1

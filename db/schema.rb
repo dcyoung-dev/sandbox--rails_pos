@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_165549) do
+ActiveRecord::Schema.define(version: 2022_06_24_202704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_165549) do
     t.bigint "basket_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "booked_at"
     t.index ["basket_id"], name: "index_orders_on_basket_id"
   end
 

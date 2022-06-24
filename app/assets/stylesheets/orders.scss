@@ -1,0 +1,10 @@
+.timeslots {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  grid-gap: 1rem;
+}
+
+.timeslot {
+  display: flex;
+  place-content: center;
+}

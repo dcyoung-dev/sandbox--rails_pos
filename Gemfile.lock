@@ -166,6 +166,7 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
+    ice_cube (0.16.4)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -200,6 +201,8 @@ GEM
       monetize (~> 1.9.0)
       money (~> 6.13.2)
       railties (>= 3.0)
+    montrose (0.13.0)
+      activesupport (>= 5.2, < 7.1)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -405,11 +408,13 @@ DEPENDENCIES
   friendly_id (~> 5.4)
   hotwire-rails
   i18n-tasks
+  ice_cube (~> 0.16.4)
   image_processing
   jbuilder (~> 2.7)
   listen (~> 3.3)
   madmin
   money-rails (~> 1.14)
+  montrose (~> 0.13.0)
   name_of_person (~> 1.1)
   noticed (~> 1.2)
   omniauth-facebook (~> 8.0)

@@ -1,0 +1,27 @@
+<h1>Place Order</h1>
+
+<%= form_with(url: basket_order_path(basket),
+              scope: :order,
+              html: {
+                style: "display: grid; grid-template-columns: auto 1fr; grid-gap: 2rem;",
+                data: { "turbo": false }
+              }) do |form| %>
+  <div>
+    <ul>
+      <%= render basket.basket_items.order(created_at: :asc) %>
+    </ul>
+
+    <%= form.button type: :submit, class: [:btn, "btn-primary"] do %>
+      <span>Place Order: <span class="fw-bolder"><%= humanized_money_with_symbol basket.total %></span></span>
+    <% end %>
+  </div>
+
+  <div class="timeslots">
+    <% slots.each do |slot, available| %>
+      <div class="timeslot">
+        <%= form.radio_button :booked_at, slot, class: "btn-check", disabled: !available %>
+        <%= form.label :booked_at, l(slot, format: :short), value: slot, class: "btn btn-outline-success" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
